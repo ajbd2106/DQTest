@@ -1,0 +1,12 @@
+dataset_id|descr|type|location|partition_id_column_name|partition_id_column_value|query|groupby_column_name|rundate_column_name
+1|All Providers, GroupBy client_id|Hive|informatics_dev.all_providers|session_id|120319064922695678435| |client_id|run_month
+2|All Members|Hive|informatics_dev.all_members|session_id|120319064922695678435| | |
+3|All Providers,No GroupBy|Hive|informatics_dev.all_providers|session_id|120319064922695678435| ||run_month
+4|All Providers,No GroupBy, Filtered|Hive|informatics_dev.all_providers|session_id| |select * from informatics_dev.all_providers where session_id=#partition_id_column_value# and client_id not in ('AET')| |run_month
+5|All Providers, Group By sub_cli_sk|Hive|informatics_prd.all_providers|session_id| | |sub_cli_sk|run_month
+6|Claimsdata_Source_All|Parquet|/datalake/optum/optuminsight/opsirsch1/informatics/dvf/data/claimsdata_source_all.parquet| | | |sub_cli_sk| 
+7|clm_header|Hive|edps_prod.clm_header|session_id| | | | 
+8|clm_dx|Hive|edps_prod.clm_dx|session_id| | | | 
+9|clm_srvc|Hive|edps_prod.clm_srvc|session_id| | | | 
+10|final_provider_info|Hive|edps_prod.final_provider_info|session_id| | | | 
+11|EDPS Claims OPSI Source|Parquet|/datalake/optum/optuminsight/opsistg1/database/hive/edpstransform/clm_uhc| | | | | 

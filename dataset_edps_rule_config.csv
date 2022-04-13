@@ -1,0 +1,13 @@
+dataset_id|rule_id|columns|rule_params|threshold_pct1|threshold_pct2
+7|21|batch_id, claim_from_date, claim_id, claim_to_date, claim_type_code, hic_number, latest_hic_mbi, med_clm_sk, edps_src_sys_clm_id, qual_flag, sub_cli_sk, edps_clm_med_rec_num, clrhse_clm_ctl_num, cntrct_nbr, clnt_guid| |0.1|0.2
+7|23|place_of_service_code| |0.1|0.2
+7|22|claim_admissing_date, claim_discharge_date, claim_facility_cd, bill_type_code| |0.1|0.2
+7|24|claim_type_code| |1|1
+7|25|claim_type_code| |1|1
+7|4|*| |100|100
+8|21|batch_id, diag_cd, diag_type_code, med_clm_diag_cd_sk, med_clm_sk, sub_cli_sk| |0.1|0.2
+8|4|*| |100|100
+9|21|batch_id, cpt_code, med_clm_diag_cd_sk, med_clm_sk, revenue_code, session_id, sub_cli_sk| |0.1|0.2
+9|4|*| |100|100
+10|21|batch_id, city, claimid, client_id, cms_prov_type, cms_specialties, fax_number, fname, fullname, group_id, group_name, group_type, hic_num, lname, med_clm_sk, npi, phone_number, prov_id, provider_orgname, src_prov_id, state, street1, street2, sub_cli_sk, tax_id, taxonomy, zip| |0.1|0.2
+10|4|*| |100|100

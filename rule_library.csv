@@ -1,0 +1,26 @@
+rule_id|descr|type|expression|default_params
+1|Column Is Null or Empty or "unknown"|Column|coalesce({col},'') = '' or upper({col}) = 'UNKNOWN'| 
+2|Column Is Null or Empty, but {col2} Has a Value|Column|(coalesce({col},'') = '' or upper({col}) = 'UNKNOWN') and coalesce({col2},'') != ''|col2=SSN
+3|Distinct values|Distinct| | 
+4|Duplicate values|Duplicates| | 
+5|Column Is Numeric|Column|{col} rlike '^[0-9]+'| 
+6|Date column is equal to {date}|Column|"{col} == '{date}'"|date=12/31/2199
+7|Column contains special characters|Column|{col} not rlike '[a-zA-Z0-9]'| 
+8|Column contains special characters other than space|Column|{col} not rlike '[a-zA-Z\s]'| 
+9|Column contains non-numeric characters|Column|{col} not rlike '^[0-9]+'|
+10|Street address columns contain "suite"|Row|upper(concat(street1,street2)) rlike 'SUITE'| 
+11|Street address columns contain "PO Box"|Row|upper(concat(street1,street2)) rlike 'PO BOX'| 
+12|Column value <> 9 or 10|Column|trim(coalesce({col},'')) not in (9,0)|
+13|Column length < {length} characters|Column|length({col}) < {length}|length=10
+14|Column length > {length} characters|Column|length({col}) < {length}|length=10
+15|Column length != {length} characters|Column|length({col}) != {length}|length=10
+16|Column Is Null or Empty, but pcp_flag='Y'|Column|(coalesce({col},'') = '' or upper({col}) = 'UNKNOWN') and pcp_flag='Y'|
+17|FName and LastName are both blank or "unknown"|Row|(coalesce(FName,'') = '' or upper(FName) = 'UNKNOWN') and (coalesce(LName,'') = '' or upper(LName) = 'UNKNOWN')| 
+18|Column is a repeating value, e.g. 111111 |Column|count_distinct_chars_udf(coalesce({col},'')) == 1| 
+19|Column value not found in State Codes Lookup|Lookup|{"type":"{type}", "location":"{location}", "column":"{lookup_column}"}|lookup_table=state_code,lookup_column=code,type=csv,location=/home/nbetz1/projects/dvf/lookup/state_codes.csv
+20|Column value not found in Speciality Codes Lookup|Lookup|{"type":"{type}", "location":"{location}", "column":"{lookup_column}"}|lookup_table=speciality_code,lookup_column=code,type=csv,location=/home/nbetz1/projects/dvf/lookup/specialty_codes.csv
+21|Column Is Null or Empty|Column|coalesce({col},'') = ''| 
+22|Hospital Claim Type and Column is Null or Empty|Column|claim_type_code = 'I' and coalesce({col},'') = ''| 
+23|Physician Claim Type and Column is Null or Empty|Column|claim_type_code = 'P' and coalesce({col},'') = ''| 
+24|Hospital Claim Type|Column|claim_type_code = 'I'| 
+25|Physician Claim Type|Column|claim_type_code = 'P'| 
